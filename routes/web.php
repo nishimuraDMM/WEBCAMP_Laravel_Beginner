@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,10 +12,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-*/
+//タスク管理システム
+Route::get('/',[AuthController::class,'index']);
+
+//test
 Route::get('/welcome', [\App\Http\Controllers\WelcomeController::class, 'index']);
 Route::get('/welcome/second', [WelcomeController::class, 'second']);
