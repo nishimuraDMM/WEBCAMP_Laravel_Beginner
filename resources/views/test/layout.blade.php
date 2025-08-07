@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>formテスト @yield('title')</title>
+    </head>
+    <body>
+        <!-- コンテンツ -->
+        タスク名:<input><br>
+        期限:<input type="date"><br>
+        タスク詳細:<textarea></textarea><br>
+        重要度:<label><input type="radio" name="priority">低い</label> / 
+            <label><input type="radio" name="priority" checked>普通</label> /
+            <label><input type="radio" name="priority">高い</label><br>
+    </form>
+    <hr>
+    <h1>タスクの削除</h1>
+    <a href="./top.html" onclick="return confirm('タスクを削除します/nよろしいですか')">タスクを削除する</a><br>
+    <hr>
+    <menu label="リンク">
+    <a href="./top.html">一覧画面に遷移する</a> / <a href="./edit.html">編集画面に遷移する</a><br>
+    <a href="./index.html">ログアウト</a><br>
+    </menu>
+    </body>
+</html>
