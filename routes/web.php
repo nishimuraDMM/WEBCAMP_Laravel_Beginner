@@ -1,11 +1,11 @@
 <?php
 
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TaskController;
-use App\Http\Controllers\TestController; 
+use App\Http\Controllers\TestController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,12 +16,21 @@ use App\Http\Controllers\TestController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-//タスク管理システム
-Route::get('/',[AuthController::class,'index']);
-Route::get('/task/list', [TaskController::class, 'list']);
 
-//test
-Route::get('/welcome', [\App\Http\Controllers\WelcomeController::class, 'index']);
+// タスク管理システム
+Route::get('/', [AuthController::class, 'index']);
+Route::post('/login', [AuthController::class, 'login']);
+// 認可処理
+Route::middleware(['auth'])->group(function () {
+    Route::get('/task/list', [TaskController::class, 'list']);
+    Route::get('/logout', [AuthController::class, 'logout']);
+});
+
+
+// テスト用
+Route::get('/welcome', [WelcomeController::class, 'index']);
 Route::get('/welcome/second', [WelcomeController::class, 'second']);
-Route::get('/test', [TestController::class, 'index']); 
+// form入力テスト用
+Route::get('/test', [TestController::class, 'index']);
 Route::post('/test/input', [TestController::class, 'input']);
+Route::get('/', [AuthController::class, 'index'])->name('front.index');

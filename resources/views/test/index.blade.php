@@ -1,7 +1,7 @@
 @extends('layout')
 {{--メインコンテンツ--}}
 @section('contents')
-
+<h1>ログイン</h1>
 @if ($errors->any())
             <div>
             @foreach ($errors->all() as $error)
@@ -10,7 +10,7 @@
             </div>
         @endif
         
-        <h1>ログイン</h1>
+     
         <form action="/test/input" method="post">
             @csrf
             email：<input type="text" name="email" value="{{ old('email') }}"><br>
