@@ -8,11 +8,26 @@ use Illuminate\Support\Facades\Auth;
 class TaskController extends Controller
 {
     //
-    public function list(){
-        return view('task.list');
-    }
+     public function list()
+    {
+             // 一覧の取得
+        $list = TaskModel::where('user_id', Auth::id())
+        ->orderBy('priority', 'DESC')
+        ->orderBy('period')
+        ->orderBy('created_at')
+        ->get();
+$sql = TaskModel::where('user_id', Auth::id())
+        ->orderBy('priority', 'DESC')
+        ->orderBy('period')
+        ->orderBy('created_at')
+        ->toSql();
+//echo "<pre>\n"; var_dump($sql, $list); exit;
+var_dump($sql);
 
-public function register(TaskRegisterPostRequest $request)
+return view('task.list', ['list' => $list]);
+
+        }
+        public function register(TaskRegisterPostRequest $request)
 {  // validate済みのデータの取得
      // validate済みのデータの取得
      $datum = $request->validated();
