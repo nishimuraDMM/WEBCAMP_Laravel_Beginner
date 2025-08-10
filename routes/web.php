@@ -18,16 +18,17 @@ use App\Http\Controllers\TestController;
 */
 
 // タスク管理システム
-Route::get('/', [AuthController::class, 'index']);
+Route::get('/', [AuthController::class, 'index'])->name('front.index');
 Route::post('/login', [AuthController::class, 'login']);
 // 認可処理
 Route::middleware(['auth'])->group(function () {
-    Route::get('/task/list', [TaskController::class, 'list']);
-    Route::post('/task/register', [TaskController::class, 'register']);
- 
+    Route::prefix('/task')->group(function () {
+        Route::get('/list', [TaskController::class, 'list']);
+        Route::post('/register', [TaskController::class, 'register']);
+        Route::get('/detail/{task_id}', [TaskController::class, 'detail'])->whereNumber('task_id')->name('detail');
+    });
     Route::get('/logout', [AuthController::class, 'logout']);
 });
-
 
 // テスト用
 Route::get('/welcome', [WelcomeController::class, 'index']);
@@ -35,4 +36,3 @@ Route::get('/welcome/second', [WelcomeController::class, 'second']);
 // form入力テスト用
 Route::get('/test', [TestController::class, 'index']);
 Route::post('/test/input', [TestController::class, 'input']);
-Route::get('/', [AuthController::class, 'index'])->name('front.index');
