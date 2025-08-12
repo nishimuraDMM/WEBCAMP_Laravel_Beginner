@@ -16,10 +16,8 @@ class LoginPostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'max:128'],
-            'period' => ['required', 'date', 'after_or_equal:today'],
-            'detail' => ['max:65535'],
-            'priority' => ['required', 'numeric', Rule::in([1, 2, 3]) ],
+            'email' => ['required', 'email', 'max:254'],
+            'password' => ['required', 'max:72'],
         ];
     }
 }
