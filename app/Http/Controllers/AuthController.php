@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginPostRequest;
+use App\Http\Requests\AdminLoginPostRequest;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
@@ -23,11 +24,15 @@ class AuthController extends Controller
      * ログイン処理
      * 
      */
-    public function login(LoginPostRequest $request)
-    {
+    public function login(AdminLoginPostRequest $request)
+    {   // データの取得
+        $datum = $request->validated();
+        var_dump($datum); exit;
+        /*
         // validate済
 
         // データの取得
+        
         $datum = $request->validated();
 
         //
@@ -44,7 +49,7 @@ class AuthController extends Controller
 
         // 認証に成功した場合
         $request->session()->regenerate();
-        return redirect()->intended('/task/list');
+        return redirect()->intended('/task/list');*/
     }   
     public function logout(Request $request)
     {
