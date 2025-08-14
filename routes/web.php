@@ -5,6 +5,8 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\CompletedTaskController;
+
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
@@ -25,7 +27,9 @@ Route::get('/', [AuthController::class, 'index'])->name('front.index');
 Route::post('/login', [AuthController::class, 'login']);
 // 認可処理
 Route::middleware(['auth'])->group(function () {
+
     Route::prefix('/task')->group(function () {
+    
         Route::get('/list', [TaskController::class, 'list']);
         Route::post('/register', [TaskController::class, 'register']);
         Route::get('/detail/{task_id}', [TaskController::class, 'detail'])->whereNumber('task_id')->name('detail');
@@ -36,6 +40,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/csv/download', [TaskController::class, 'csvDownload']);
     });
     Route::get('/logout', [AuthController::class, 'logout']);
+    //課題
+    Route::get('/completed_tasks/list', [CompletedTaskController::class, 'list']);
+
 });
 // 管理画面
 Route::prefix('/admin')->group(function () {
@@ -48,7 +55,7 @@ Route::prefix('/admin')->group(function () {
     });
 });
 //課題
-Route::get(' /completed_tasks/list', [TaskController::class, 'list']);
+Route::get('/user/register', [UserController::class, 'index']);
 
 // テスト用
 Route::get('/welcome', [WelcomeController::class, 'index']);
