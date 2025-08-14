@@ -78,5 +78,6 @@
         <hr>
         <menu label="リンク">
         <a href="/logout">ログアウト</a><br>
+        <a href="/completed_tasks/list">完了タスク一覧</a><br>
         </menu>
 @endsection          
