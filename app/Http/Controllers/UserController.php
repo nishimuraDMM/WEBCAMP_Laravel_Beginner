@@ -11,7 +11,7 @@ use App\Models\CompletedTask as CompletedTaskModel;
 use App\Models\Task as TaskModel;
 class UserController extends Controller{
     public function index(){
-        
+        return view('user.register');
     }
     public function register(TaskRegisterPostRequest $request)
     {

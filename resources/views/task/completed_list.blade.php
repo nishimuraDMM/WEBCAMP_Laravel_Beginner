@@ -5,6 +5,7 @@
 
 {{-- メインコンテンツ --}}
 @section('contents')
+<a href="/task/list">タスク一覧に戻る</a><br>
 <table border="1">
         <tr>
             <th>タスク名
@@ -15,9 +16,7 @@
             <td>{{ $task->name }}
             <td>{{ $task->period }}
             <td>{{ $task->getPriorityString() }}
-            <td><a href="./detail.html">詳細閲覧</a>
-            <td><a href="./edit.html">編集</a>
-            <td><form action="./top.html"><button>完了</button></form>
         @endforeach
         </table>
+        <a href="/logout">ログアウト</a><br>
         @endsection
