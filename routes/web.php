@@ -54,8 +54,7 @@ Route::prefix('/admin')->group(function () {
         Route::get('/user/list', [AdminUserController::class, 'list'])->name('admin.user.list');
     });
 });
-//課題
-Route::get('/user/register', [UserController::class, 'index']);
+
 
 // テスト用
 Route::get('/welcome', [WelcomeController::class, 'index']);
