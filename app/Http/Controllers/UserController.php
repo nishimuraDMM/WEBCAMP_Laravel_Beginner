@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\UserRegisterPostRequest;
+use App\Http\Requests\UserRegisterPost;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\CompletedTask as CompletedTaskModel;
@@ -38,7 +38,8 @@ class UserController extends Controller{
         $request->session()->flash('front.task_register_success', true);
 
         // リダイレクト
-        return redirect('/task/list');
+        return redirect('/');
+
     }
 
 }
