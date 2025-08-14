@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\TaskRegisterPostRequest;
+use App\Http\Requests\UserRegisterPostRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\CompletedTask as CompletedTaskModel;
