@@ -11,11 +11,14 @@
             <th>タスク名
             <th>期限
             <th>重要度
+                <th>タスク終了日
         @foreach ($list as $task)
         <tr>
             <td>{{ $task->name }}
             <td>{{ $task->period }}
             <td>{{ $task->getPriorityString() }}
+            <td>{{ $task->created_at }}
+
         @endforeach
         </table>
         <a href="/logout">ログアウト</a><br>
