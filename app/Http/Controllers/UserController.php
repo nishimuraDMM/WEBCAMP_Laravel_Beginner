@@ -13,7 +13,7 @@ class UserController extends Controller{
     public function index(){
         return view('user.register');
     }
-    public function register(TaskRegisterPostRequest $request)
+    public function register(UserRegisterPostRequest $request)
     {
         // validate済みのデータの取得
         $datum = $request->validated();
