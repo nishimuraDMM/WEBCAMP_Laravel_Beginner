@@ -8,12 +8,13 @@ use App\Http\Requests\UserRegisterPost;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\CompletedTask as CompletedTaskModel;
-use App\Models\Task as TaskModel;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User as UserModel;
 class UserController extends Controller{
     public function index(){
         return view('user.register');
     }
-    public function register(UserRegisterPostRequest $request)
+    public function register(UserRegisterPost $request)
     {
         // validate済みのデータの取得
         $datum = $request->validated();
@@ -23,11 +24,10 @@ class UserController extends Controller{
         //var_dump($datum, $user, $id); exit;
 
         // user_id の追加
-        $datum['user_id'] = Auth::id();
-
+        $datum['password'] = Hash::make($datum['password']);
         // テーブルへのINSERT
         try {
-            $r = TaskModel::create($datum);
+            $r = UserModel::create($datum);
         } catch(\Throwable $e) {
             // XXX 本当はログに書く等の処理をする。今回は一端「出力する」だけ
             echo $e->getMessage();
