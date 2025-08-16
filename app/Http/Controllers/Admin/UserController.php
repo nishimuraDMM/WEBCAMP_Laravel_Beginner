@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\AdminUser as UserModel;
+use App\Models\User as UserModel;
 
 class UserController extends Controller
 {

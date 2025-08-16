@@ -11,24 +11,7 @@
         <th>タスク件数</th>
 
     </tr>
-    <tr>
-        <td>1</td>
-        <td>WEB太郎</td>
-        <td>１０</td>
-
-    </tr>
-    <tr>
-        <td>２</td>
-        <td>DMM　次郎</td>
-        <td>４２</td>
-
-    </tr>
-    <tr>
-        <td>４</td>
-        <td>CAMP　三郎</td>
-        <td>５</td>
-
-    </tr>
+  
     @foreach ($users as $user)
         <tr>
             <td>{{ $user->id }}
