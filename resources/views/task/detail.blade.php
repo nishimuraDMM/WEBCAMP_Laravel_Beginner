@@ -4,7 +4,7 @@
 @section('title')(詳細画面)@endsection
 
 {{-- メインコンテンツ --}}
-@section('contets')
+@section('contents')
         <h1>タスク詳細閲覧</h1>
         @if (session('front.task_edit_success') == true)
             タスクを編集しました！！<br>
