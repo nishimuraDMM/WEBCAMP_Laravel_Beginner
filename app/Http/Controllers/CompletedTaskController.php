@@ -16,14 +16,16 @@ class CompletedTaskController extends Controller
      * @return \Illuminate\View\View
      */
     public function list()
-    {
+    {$per_page=2;
+
         // 一覧の取得
         $list = TaskModel::where('user_id', Auth::id())
                         ->orderBy('priority', 'DESC')
                         ->orderBy('period')
                         ->orderBy('created_at')
-                        ->get();
-        $sql = TaskModel::where('user_id', Auth::id())
+     ->paginate($per_page);
+     
+     $sql = TaskModel::where('user_id', Auth::id())
                         ->orderBy('priority', 'DESC')
                         ->orderBy('period')
                         ->orderBy('created_at')
